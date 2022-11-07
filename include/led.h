@@ -10,7 +10,7 @@ typedef struct
     BYTE B;
 } RGB;
 
-void withTiming(RGB from, RGB to, unsigned int ms);
+void withTiming(RGB to, unsigned int ms);
 void setColor(RGB color);
 
 #endif

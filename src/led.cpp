@@ -3,10 +3,12 @@
 #include <algorithm>
 #include <Arduino.h>
 #include "gpio.h"
+#include "memory.h"
 
-void withTiming(RGB from, RGB to, unsigned int ms)
+void withTiming(RGB to, unsigned int ms)
 {
-    RGB diff, status;
+    RGB diff, status, from;
+    from = readColor();
     diff.R = abs(from.R - to.R);
     diff.G = abs(from.G - to.G);
     diff.B = abs(from.B - to.B);
