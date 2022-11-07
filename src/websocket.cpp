@@ -25,15 +25,18 @@ void handleText(uint8_t num, uint8_t *payload, size_t length)
 
     switch (payload[0])
     {
-    case 'C':
+    case 'C': // Change color
         Serial.println("Received color command");
         color = getColorFromMsg((char *)(payload + 1), length - 1);
         setColor(color);
         break;
-    case 'P':
+    case 'P': // Ping
         Serial.println("Received ping command");
         WiFi.localIP().toString().toCharArray(ip, 15);
-        // ws->sendTXT(num, ip, 15);
+        ws.sendTXT(num, ip, 15);
+        break;
+    case 'R': // Restart
+        ESP.restart();
         break;
     }
 }

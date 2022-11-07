@@ -7,7 +7,7 @@
 #include "gpio.h"
 #include "led.h"
 
-WebSocketsServer *ws = new WebSocketsServer(PORT);
+WebSocketsServer ws = WebSocketsServer(PORT);
 
 void setup()
 {
@@ -20,13 +20,13 @@ void setup()
   initWiFi();
 
   // WebSocket
-  ws->begin();
-  ws->onEvent(wsEvent);
+  ws.begin();
+  ws.onEvent(wsEvent);
 
   Serial.println("Setup done");
 }
 
 void loop()
 {
-  ws->loop();
+  ws.loop();
 }
